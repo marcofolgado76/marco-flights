@@ -25,12 +25,12 @@ export default function DrawerMenu() {
 
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation">
-      <Link to="/" >
+      <Link to="/">
         <img src={Logo} alt="Logo" style={flightCardStyles.logoImage} />
       </Link>
       <List>
         <Divider />
-        <ListItem >
+        <ListItem>
           <ListItemButton disabled>
             <ListItemIcon>
               <TravelExploreIcon />
@@ -38,17 +38,17 @@ export default function DrawerMenu() {
             <ListItemText primary={'Explore'} />
           </ListItemButton>
         </ListItem>
-        
-        <ListItem >
+
+        <ListItem>
           <ListItemButton onClick={toggleDrawer(false)} selected>
             <ListItemIcon>
-              <FlightTakeoffIcon style={{ color: '#1976d2' }} /> {/* Optional: Color icon */}
+              <FlightTakeoffIcon style={{ color: '#1976d2' }} />{' '}
             </ListItemIcon>
             <ListItemText primary={'Flights'} />
           </ListItemButton>
         </ListItem>
 
-        <ListItem >
+        <ListItem>
           <ListItemButton disabled>
             <ListItemIcon>
               <HotelIcon />

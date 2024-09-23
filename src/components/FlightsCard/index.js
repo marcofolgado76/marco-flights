@@ -1,5 +1,3 @@
-// src/components/FlightsCard.js
-
 import React from 'react';
 import { flightCardStyles } from './styles';
 

@@ -41,11 +41,11 @@ export const flightCardStyles = {
     fontSize: '0.9rem',
     color: colors.textSecondary,
     margin: '0.5rem 0',
-    textAlign: 'left', 
+    textAlign: 'left',
   },
   duration: {
     fontSize: '0.9rem',
     color: colors.textSecondary,
-    textAlign: 'left', 
+    textAlign: 'left',
   },
 };
