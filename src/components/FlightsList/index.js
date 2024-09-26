@@ -1,5 +1,5 @@
 import React from 'react';
-import FlightsCard from '../FlightsCard';
+import FlightsCard from 'components/FlightsCard';
 
 const flightData = [
   {

@@ -13,7 +13,7 @@ import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
-import Logo from '../../assets/images/iconBlack.png';
+import Logo from 'assets/images/iconBlack.png';
 import { flightCardStyles } from './styles';
 
 export default function DrawerMenu() {

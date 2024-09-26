@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import SearchBar from '../../components/SearchBar';
-import Header from '../../components/Header';
+import SearchBar from 'components/SearchBar';
+import Header from 'components/Header';
 import { homePageStyles } from './styles';
-import FlightsList from '../../components/FlightsList';
-
+import FlightsList from 'components/FlightsList';
+import { searchAirport } from 'services/flightService';
 const HomePage = () => {
+  searchAirport('new').then((data) => console.log(data));
+
   return (
     <>
       <Header />

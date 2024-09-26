@@ -1,11 +1,11 @@
-import { colors } from '../../styles/colors';
+import { colors } from 'styles/colors';
 
 export const searchBarStyles = {
   container: {
     backgroundColor: '#fff',
     borderRadius: '16px',
     boxShadow: '0 4px 16px rgba(0, 0, 0, 0.1)', // Softer shadow for depth
-    padding: '1.5rem',
+    padding: '0.8rem',
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'space-between',

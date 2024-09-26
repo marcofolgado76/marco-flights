@@ -3,8 +3,8 @@ import { Link, useLocation } from 'react-router-dom'; // Material-UI Button
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import HotelIcon from '@mui/icons-material/Hotel';
-import DrawerMenu from '../DrawerMenu';
-import Logo from '../../assets/images/icon.png';
+import DrawerMenu from 'components/DrawerMenu';
+import Logo from 'assets/images/icon.png';
 import { headerStyles } from './styles';
 import Grid from '@mui/material/Grid';
 import useMediaQuery from '@mui/material/useMediaQuery';
