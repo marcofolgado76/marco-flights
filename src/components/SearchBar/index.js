@@ -42,7 +42,9 @@ const SearchBar = () => {
 
   const [originResults, setOriginResults] = useState([]);
   const [destinationResults, setDestinationResults] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [flightsLoading, setFlightsLoading] = useState(false);
+  const [airportsLoading, setAirportsLoading] = useState(false);
+
   const [anchorEl, setAnchorEl] = useState(null);
   const [popoverType, setPopoverType] = useState('');
   const [error, setError] = useState('');
@@ -55,7 +57,7 @@ const SearchBar = () => {
 
   const fetchAirports = async (query, setResults) => {
     try {
-      setLoading(true);
+      setAirportsLoading(true);
       const response = await searchAirport(query);
       if (response.status && response.data) {
         setResults(response.data);
@@ -63,7 +65,7 @@ const SearchBar = () => {
     } catch (error) {
       console.error('Error fetching airports:', error);
     } finally {
-      setLoading(false);
+      setAirportsLoading(false);
     }
   };
 
@@ -112,7 +114,7 @@ const SearchBar = () => {
     }
 
     setError('');
-    setLoading(true);
+    setFlightsLoading(true);
 
     try {
       const flightSearchParams = {
@@ -135,7 +137,7 @@ const SearchBar = () => {
     } catch (error) {
       console.error('Error searching for flights:', error);
     } finally {
-      setLoading(false);
+      setFlightsLoading(false);
     }
   };
 
@@ -277,9 +279,9 @@ const SearchBar = () => {
             variant="contained"
             style={searchBarStyles.button}
             fullWidth
-            disabled={loading} // Disable the button while searching
+            disabled={flightsLoading} // Disable the button while searching
           >
-            {loading ? <CircularProgress size={24} /> : 'Search Flights'}
+            {flightsLoading ? <CircularProgress color='white' size={24} /> : 'Search Flights'}
           </Button>
         </Grid>
       </Grid>
@@ -287,7 +289,7 @@ const SearchBar = () => {
       <Popover
         open={
           Boolean(anchorEl) &&
-          (originResults.length > 0 || destinationResults.length > 0 || loading)
+          (originResults.length > 0 || destinationResults.length > 0 || airportsLoading)
         }
         anchorEl={anchorEl}
         onClose={handleClosePopover}
@@ -304,7 +306,7 @@ const SearchBar = () => {
         }}
       >
         <List>
-          {loading ? (
+          {airportsLoading ? (
             <div
               style={{
                 display: 'flex',
