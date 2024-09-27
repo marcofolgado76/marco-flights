@@ -29,7 +29,6 @@ const ItinerariesList = () => {
         currency: 'USD',
         countryCode: 'US',
       };
-      console.log({flightSearchParams})
 
       const searchResults = await searchFlight(flightSearchParams);
       setItineraries(searchResults.data.itineraries);  
