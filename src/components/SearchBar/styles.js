@@ -4,7 +4,7 @@ export const searchBarStyles = {
   container: {
     backgroundColor: '#fff',
     borderRadius: '16px',
-    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.1)', // Softer shadow for depth
+    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.1)', 
     padding: '0.8rem',
     alignItems: 'center',
     display: 'flex',
@@ -15,7 +15,7 @@ export const searchBarStyles = {
     backgroundColor: '#f9f9f9',
     borderRadius: '8px',
     fontSize: '1rem',
-    height: '56px', // Set consistent height for inputs
+    height: '56px', 
     border: '1px solid #ddd',
   },
   button: {
@@ -25,7 +25,7 @@ export const searchBarStyles = {
     color: '#fff',
     border: 'none',
     borderRadius: '8px',
-    height: '56px', // Match the input height
+    height: '56px',
     cursor: 'pointer',
     textTransform: 'none',
     transition: 'background-color 0.3s ease',

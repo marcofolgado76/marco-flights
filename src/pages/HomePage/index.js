@@ -3,9 +3,8 @@ import SearchBar from 'components/SearchBar';
 import Header from 'components/Header';
 import { homePageStyles } from './styles';
 import FlightsList from 'components/FlightsList';
-import { searchAirport } from 'services/flightService';
+import ItinerariesList from 'components/ItinerariesList';
 const HomePage = () => {
-  searchAirport('new').then((data) => console.log(data));
 
   return (
     <>
@@ -13,6 +12,9 @@ const HomePage = () => {
       <div style={homePageStyles.container}>
         <section style={homePageStyles.searchSection}>
           <SearchBar />
+        </section>
+        <section style={homePageStyles.flightSection}>
+          <ItinerariesList />
         </section>
         <section style={homePageStyles.flightSection}>
           <FlightsList />

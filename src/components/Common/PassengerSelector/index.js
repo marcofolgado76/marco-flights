@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Grid,
   Typography,
@@ -15,12 +15,17 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import PersonIcon from '@mui/icons-material/Person';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { passengerSelectorStyles } from './styles'; // Import the styles
+import { passengerSelectorStyles } from './styles'; 
+import FlightsContext from 'context/FlightsContext';
 
 const PassengerSelector = () => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [adults, setAdults] = useState(1); // Ensure at least 1 adult
-  const [children, setChildren] = useState(0); // Can be 0 or more
+  const {
+    adultsNumber,
+    childrenNumber,
+    setChildrenNumber,
+    setAdultsNumber,
+  } = useContext(FlightsContext);
 
   const openPopover = (event) => {
     setAnchorEl(event.currentTarget);
@@ -35,28 +40,27 @@ const PassengerSelector = () => {
     if (value > minValue) setter(value - 1);
   };
 
-  const totalPassengers = adults + children;
+  const totalPassengers = adultsNumber + childrenNumber;
   const isOpen = Boolean(anchorEl);
   const popoverId = isOpen ? 'passenger-popover' : undefined;
 
   return (
     <>
-      {/* Use FormControl and Select to show total passengers */}
       <FormControl fullWidth variant="outlined">
         <InputLabel id="passenger-selector-label">Passengers</InputLabel>
         <Select
           labelId="passenger-selector-label"
           value={totalPassengers}
           label={`${totalPassengers} Passenger(s)`}
-          onClick={openPopover} // Open popover on click
-          inputProps={{ readOnly: true }} // Prevent default dropdown behavior
+          onClick={openPopover} 
+          inputProps={{ readOnly: true }} 
           startAdornment={
             <InputAdornment position="start">
               <PersonIcon />
             </InputAdornment>
           }
-          IconComponent={ArrowDropDownIcon} // Use dropdown icon
-          renderValue={() => `${totalPassengers}`} // Display total passengers
+          IconComponent={ArrowDropDownIcon} 
+          renderValue={() => `${totalPassengers}`} 
         >
           {/* Placeholder MenuItem, not used */}
           <MenuItem value={totalPassengers}>
@@ -80,45 +84,39 @@ const PassengerSelector = () => {
         }}
       >
         <Grid container spacing={2} sx={passengerSelectorStyles.popover}>
-          {/* Adults */}
           <Grid item xs={6}>
             <Typography>Adults</Typography>
           </Grid>
           <Grid item xs={6} style={{ textAlign: 'right' }}>
-            {/* Disable decrement if only 1 adult */}
             <IconButton
-              onClick={() => decrement(setAdults, adults, 1)}
-              disabled={adults + children <= 1}
+              onClick={() => decrement(setAdultsNumber, adultsNumber, 1)}
+              disabled={adultsNumber + childrenNumber <= 1}
             >
               <RemoveIcon />
             </IconButton>
-            <Typography component="span">{adults}</Typography>
-            <IconButton onClick={() => increment(setAdults, adults)}>
+            <Typography component="span">{adultsNumber}</Typography>
+            <IconButton onClick={() => increment(setAdultsNumber, adultsNumber)}>
               <AddIcon />
             </IconButton>
           </Grid>
 
-          {/* Children */}
           <Grid item xs={6}>
             <Typography>Children (Aged 2-11)</Typography>
           </Grid>
           <Grid item xs={6} style={{ textAlign: 'right' }}>
-            {/* Children can be decremented to 0 */}
             <IconButton
-              onClick={() => decrement(setChildren, children)}
-              disabled={adults + children <= 1}
+              onClick={() => decrement(setChildrenNumber, childrenNumber)}
+              disabled={adultsNumber + childrenNumber <= 1}
             >
               <RemoveIcon />
             </IconButton>
-            <Typography component="span">{children}</Typography>
-            <IconButton onClick={() => increment(setChildren, children)}>
+            <Typography component="span">{childrenNumber}</Typography>
+            <IconButton onClick={() => increment(setChildrenNumber, childrenNumber)}>
               <AddIcon />
             </IconButton>
           </Grid>
 
-          {/* Buttons */}
           <Grid item xs={6}>
-            {/* Cancel button in black, with custom style */}
             <Button onClick={closePopover} fullWidth>
               Cancel
             </Button>
