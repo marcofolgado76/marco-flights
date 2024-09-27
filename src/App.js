@@ -7,16 +7,14 @@ import FlightDetails from './pages/FlightDetails'; */
 function App() {
   return (
     <FlightsProvider>
-
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        {/*  <Route path="/results" element={<SearchResults />} />
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          {/*  <Route path="/results" element={<SearchResults />} />
         <Route path="/flight/:id" element={<FlightDetails />} /> */}
-      </Routes>
-    </Router>
+        </Routes>
+      </Router>
     </FlightsProvider>
-
   );
 }
 

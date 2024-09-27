@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';  
+import { Link, useLocation } from 'react-router-dom';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import HotelIcon from '@mui/icons-material/Hotel';

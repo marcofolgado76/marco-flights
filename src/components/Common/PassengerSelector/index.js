@@ -15,17 +15,13 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import PersonIcon from '@mui/icons-material/Person';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { passengerSelectorStyles } from './styles'; 
+import { passengerSelectorStyles } from './styles';
 import FlightsContext from 'context/FlightsContext';
 
 const PassengerSelector = () => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const {
-    adultsNumber,
-    childrenNumber,
-    setChildrenNumber,
-    setAdultsNumber,
-  } = useContext(FlightsContext);
+  const { adultsNumber, childrenNumber, setChildrenNumber, setAdultsNumber } =
+    useContext(FlightsContext);
 
   const openPopover = (event) => {
     setAnchorEl(event.currentTarget);
@@ -52,15 +48,15 @@ const PassengerSelector = () => {
           labelId="passenger-selector-label"
           value={totalPassengers}
           label={`${totalPassengers} Passenger(s)`}
-          onClick={openPopover} 
-          inputProps={{ readOnly: true }} 
+          onClick={openPopover}
+          inputProps={{ readOnly: true }}
           startAdornment={
             <InputAdornment position="start">
               <PersonIcon />
             </InputAdornment>
           }
-          IconComponent={ArrowDropDownIcon} 
-          renderValue={() => `${totalPassengers}`} 
+          IconComponent={ArrowDropDownIcon}
+          renderValue={() => `${totalPassengers}`}
         >
           {/* Placeholder MenuItem, not used */}
           <MenuItem value={totalPassengers}>
@@ -95,7 +91,9 @@ const PassengerSelector = () => {
               <RemoveIcon />
             </IconButton>
             <Typography component="span">{adultsNumber}</Typography>
-            <IconButton onClick={() => increment(setAdultsNumber, adultsNumber)}>
+            <IconButton
+              onClick={() => increment(setAdultsNumber, adultsNumber)}
+            >
               <AddIcon />
             </IconButton>
           </Grid>
@@ -111,7 +109,9 @@ const PassengerSelector = () => {
               <RemoveIcon />
             </IconButton>
             <Typography component="span">{childrenNumber}</Typography>
-            <IconButton onClick={() => increment(setChildrenNumber, childrenNumber)}>
+            <IconButton
+              onClick={() => increment(setChildrenNumber, childrenNumber)}
+            >
               <AddIcon />
             </IconButton>
           </Grid>

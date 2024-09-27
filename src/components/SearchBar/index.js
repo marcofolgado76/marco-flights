@@ -37,7 +37,7 @@ const SearchBar = () => {
     setItineraries,
     childrenNumber,
     adultsNumber,
-    orderBy
+    orderBy,
   } = useContext(FlightsContext);
 
   const [originResults, setOriginResults] = useState([]);
@@ -52,8 +52,6 @@ const SearchBar = () => {
   const isOriginTyping = useRef(false);
   const isDestinationTyping = useRef(false);
   const initialRender = useRef(true);
-
-
 
   const fetchAirports = async (query, setResults) => {
     try {
@@ -109,7 +107,9 @@ const SearchBar = () => {
 
   const handleSearch = async () => {
     if (!origin.name || !destination.name || !departureDate || !returnDate) {
-      setError('Please fill in all required fields: Origin, Destination, Departure Date, and Return Date.');
+      setError(
+        'Please fill in all required fields: Origin, Destination, Departure Date, and Return Date.'
+      );
       return;
     }
 
@@ -125,15 +125,15 @@ const SearchBar = () => {
         date: departureDate,
         returnDate,
         cabinClass: ticketType,
-        adults: adultsNumber, 
-        children: childrenNumber, 
+        adults: adultsNumber,
+        children: childrenNumber,
         sortBy: orderBy,
         currency: 'USD',
         countryCode: 'US',
       };
 
       const searchResults = await searchFlight(flightSearchParams);
-      setItineraries(searchResults.data.itineraries);  
+      setItineraries(searchResults.data.itineraries);
     } catch (error) {
       console.error('Error searching for flights:', error);
     } finally {
@@ -148,10 +148,18 @@ const SearchBar = () => {
   const handleSelectAirport = (airport) => {
     if (popoverType === 'origin') {
       isOriginTyping.current = false;
-      setOrigin({ name: airport.presentation.suggestionTitle, entityId: airport.entityId, skyId: airport.skyId });
+      setOrigin({
+        name: airport.presentation.suggestionTitle,
+        entityId: airport.entityId,
+        skyId: airport.skyId,
+      });
     } else if (popoverType === 'destination') {
       isDestinationTyping.current = false;
-      setDestination({ name: airport.presentation.suggestionTitle, entityId: airport.entityId, skyId: airport.skyId });
+      setDestination({
+        name: airport.presentation.suggestionTitle,
+        entityId: airport.entityId,
+        skyId: airport.skyId,
+      });
     }
     setAnchorEl(null);
   };
@@ -159,11 +167,12 @@ const SearchBar = () => {
   return (
     <Container maxWidth="lg">
       <Grid container spacing={2} style={searchBarStyles.container}>
-        {error && <div style={{ color: 'red', marginBottom: '1rem' }}>{error}</div>}
-        
+        {error && (
+          <div style={{ color: 'red', marginBottom: '1rem' }}>{error}</div>
+        )}
+
         <Grid item xs={12}>
           <Grid container spacing={2}>
-
             <Grid item xs={12} sm={5} md={2}>
               <PassengerSelector />
             </Grid>
@@ -281,7 +290,11 @@ const SearchBar = () => {
             fullWidth
             disabled={flightsLoading} // Disable the button while searching
           >
-            {flightsLoading ? <CircularProgress color='white' size={24} /> : 'Search Flights'}
+            {flightsLoading ? (
+              <CircularProgress color="white" size={24} />
+            ) : (
+              'Search Flights'
+            )}
           </Button>
         </Grid>
       </Grid>
@@ -289,17 +302,19 @@ const SearchBar = () => {
       <Popover
         open={
           Boolean(anchorEl) &&
-          (originResults.length > 0 || destinationResults.length > 0 || airportsLoading)
+          (originResults.length > 0 ||
+            destinationResults.length > 0 ||
+            airportsLoading)
         }
         anchorEl={anchorEl}
         onClose={handleClosePopover}
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'center', 
+          horizontal: 'center',
         }}
         transformOrigin={{
           vertical: 'top',
-          horizontal: 'center', 
+          horizontal: 'center',
         }}
         PaperProps={{
           style: { minWidth: '250px', minHeight: '150px' },
@@ -312,7 +327,7 @@ const SearchBar = () => {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                height: '150px', 
+                height: '150px',
                 width: '100%',
               }}
             >

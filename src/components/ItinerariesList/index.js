@@ -1,10 +1,37 @@
 import React, { useContext, useState } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Container, FormControl, InputLabel, Select, MenuItem, CircularProgress, Box } from '@mui/material';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Container,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  CircularProgress,
+  Box,
+} from '@mui/material';
 import FlightsContext from 'context/FlightsContext';
 import { searchFlight } from 'services/flightService';
 
 const ItinerariesList = () => {
-  const { itineraries, setOrderBy, orderBy, destination, departureDate, returnDate, ticketType, adultsNumber, childrenNumber, setItineraries, origin } = useContext(FlightsContext);
+  const {
+    itineraries,
+    setOrderBy,
+    orderBy,
+    destination,
+    departureDate,
+    returnDate,
+    ticketType,
+    adultsNumber,
+    childrenNumber,
+    setItineraries,
+    origin,
+  } = useContext(FlightsContext);
   const [loading, setLoading] = useState(false); // Manage loading state
 
   if (itineraries.length === 0) {
@@ -43,7 +70,14 @@ const ItinerariesList = () => {
 
   return (
     <Container>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginBottom: '16px',
+        }}
+      >
         <h2>Flight Itineraries</h2>
         <FormControl variant="outlined" size="large">
           <InputLabel id="order-by-label">Order By</InputLabel>
@@ -56,22 +90,31 @@ const ItinerariesList = () => {
           >
             <MenuItem value="best">Best</MenuItem>
             <MenuItem value="price_high">Cheapest</MenuItem>
-            <MenuItem value="outbound_take_off_time">Outbound Take Off Time</MenuItem>
-            <MenuItem value="outbound_landing_time">Outbound Landing Time</MenuItem>
-            <MenuItem value="return_take_off_time">Return Take Off Time</MenuItem>
+            <MenuItem value="outbound_take_off_time">
+              Outbound Take Off Time
+            </MenuItem>
+            <MenuItem value="outbound_landing_time">
+              Outbound Landing Time
+            </MenuItem>
+            <MenuItem value="return_take_off_time">
+              Return Take Off Time
+            </MenuItem>
             <MenuItem value="return_landing_time">Return Landing Time</MenuItem>
           </Select>
         </FormControl>
       </div>
 
-      <TableContainer component={Paper} style={{ minHeight: '400px', position: 'relative' }}>
+      <TableContainer
+        component={Paper}
+        style={{ minHeight: '400px', position: 'relative' }}
+      >
         {loading ? (
           <Box
             sx={{
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              height: '400px',  // Set to the same as minHeight of TableContainer
+              height: '400px', // Set to the same as minHeight of TableContainer
               width: '100%',
               position: 'absolute',
               top: 0,
@@ -99,18 +142,29 @@ const ItinerariesList = () => {
                 itinerary.legs.map((leg) => (
                   <TableRow key={leg.id}>
                     <TableCell>{itinerary.price.formatted}</TableCell>
-                    <TableCell>{leg.origin.city} ({leg.origin.displayCode})</TableCell>
-                    <TableCell>{leg.destination.city} ({leg.destination.displayCode})</TableCell>
-                    <TableCell>{new Date(leg.departure).toLocaleString()}</TableCell>
-                    <TableCell>{new Date(leg.arrival).toLocaleString()}</TableCell>
-                    <TableCell>{Math.floor(leg.durationInMinutes / 60)}h {leg.durationInMinutes % 60}m</TableCell>
+                    <TableCell>
+                      {leg.origin.city} ({leg.origin.displayCode})
+                    </TableCell>
+                    <TableCell>
+                      {leg.destination.city} ({leg.destination.displayCode})
+                    </TableCell>
+                    <TableCell>
+                      {new Date(leg.departure).toLocaleString()}
+                    </TableCell>
+                    <TableCell>
+                      {new Date(leg.arrival).toLocaleString()}
+                    </TableCell>
+                    <TableCell>
+                      {Math.floor(leg.durationInMinutes / 60)}h{' '}
+                      {leg.durationInMinutes % 60}m
+                    </TableCell>
                     <TableCell>{leg.stopCount === 0 ? 'Yes' : 'No'}</TableCell>
                     <TableCell>
                       <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <img 
-                          src={leg.carriers.marketing[0].logoUrl} 
-                          alt={leg.carriers.marketing[0].name} 
-                          style={{ height: '20px', marginRight: '8px' }} 
+                        <img
+                          src={leg.carriers.marketing[0].logoUrl}
+                          alt={leg.carriers.marketing[0].name}
+                          style={{ height: '20px', marginRight: '8px' }}
                         />
                         {leg.carriers.marketing[0].name}
                       </div>

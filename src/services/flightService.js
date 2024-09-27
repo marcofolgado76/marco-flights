@@ -33,7 +33,7 @@ export async function searchFlight({
   sortBy = 'best',
   currency = 'USD',
   countryCode = 'US',
-  limit= 8,
+  limit = 8,
 }) {
   const options = {
     method: 'GET',

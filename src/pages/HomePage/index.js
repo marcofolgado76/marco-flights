@@ -14,11 +14,11 @@ const HomePage = () => {
         <section style={homePageStyles.searchSection}>
           <SearchBar />
         </section>
-        {itineraries && itineraries.length > 0 && 
-                <section style={homePageStyles.flightSection}>
-                <ItinerariesList />
-              </section>
-        }
+        {itineraries && itineraries.length > 0 && (
+          <section style={homePageStyles.flightSection}>
+            <ItinerariesList />
+          </section>
+        )}
 
         <section style={homePageStyles.flightSection}>
           <FlightsList />
