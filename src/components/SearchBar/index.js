@@ -288,7 +288,7 @@ const SearchBar = () => {
             variant="contained"
             style={searchBarStyles.button}
             fullWidth
-            disabled={flightsLoading} // Disable the button while searching
+            disabled={flightsLoading}
           >
             {flightsLoading ? (
               <CircularProgress color="white" size={24} />

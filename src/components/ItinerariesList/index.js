@@ -32,16 +32,15 @@ const ItinerariesList = () => {
     setItineraries,
     origin,
   } = useContext(FlightsContext);
-  const [loading, setLoading] = useState(false); // Manage loading state
+  const [loading, setLoading] = useState(false);
 
   if (itineraries.length === 0) {
     return <p>No itineraries available</p>;
   }
 
-  // Function to handle sorting
   const handleOrderChange = async (event) => {
     setOrderBy(String(event.target.value));
-    setLoading(true); // Set loading to true while fetching data
+    setLoading(true);
 
     try {
       const flightSearchParams = {
@@ -64,7 +63,7 @@ const ItinerariesList = () => {
     } catch (error) {
       console.error('Error searching for flights:', error);
     } finally {
-      setLoading(false); // Set loading to false after data is fetched
+      setLoading(false);
     }
   };
 
@@ -114,7 +113,7 @@ const ItinerariesList = () => {
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              height: '400px', // Set to the same as minHeight of TableContainer
+              height: '400px',
               width: '100%',
               position: 'absolute',
               top: 0,

@@ -1,9 +1,7 @@
 import React, { createContext, useState } from 'react';
 
-// Create the context
 const FlightsContext = createContext();
 
-// Create a provider component
 export const FlightsProvider = ({ children }) => {
   const [itineraries, setItineraries] = useState([]);
   const [origin, setOrigin] = useState({ name: '', entityId: '', skyId: '' });
