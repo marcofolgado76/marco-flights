@@ -19,12 +19,11 @@ const HomePage = () => {
             <ItinerariesList />
           </section>
         )}
-{(!itineraries || itineraries.length <= 0) && (
-
-        <section style={homePageStyles.flightSection}>
-          <FlightsList />
-        </section>
-         )}
+        {(!itineraries || itineraries.length <= 0) && (
+          <section style={homePageStyles.flightSection}>
+            <FlightsList />
+          </section>
+        )}
       </div>
     </>
   );
