@@ -46,7 +46,7 @@ const PassengerSelector = () => {
         <InputLabel id="passenger-selector-label">Passengers</InputLabel>
         <Select
           labelId="passenger-selector-label"
-          value={totalPassengers}
+          value={totalPassengers || ''}
           label={`${totalPassengers} Passenger(s)`}
           onClick={openPopover}
           inputProps={{ readOnly: true }}

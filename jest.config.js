@@ -1,6 +1,5 @@
-// jest.config.js
 module.exports = {
-    testEnvironment: 'jsdom',
+    testEnvironment: 'jsdom',  // Ensures the correct test environment for DOM testing
     transform: {
       '^.+\\.[jt]sx?$': 'babel-jest',  // Use babel-jest to handle JS/JSX and TS/TSX
     },
@@ -10,6 +9,6 @@ module.exports = {
       '^context/(.*)$': '<rootDir>/src/context/$1',
       '^services/(.*)$': '<rootDir>/src/services/$1',
     },
-    transformIgnorePatterns: ['node_modules/(?!(axios)/)'], // Transform axios if using ESM
+    transformIgnorePatterns: ['node_modules/(?!(axios)/)'],  // Transform axios if using ESM
   };
   

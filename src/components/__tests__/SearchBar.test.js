@@ -1,7 +1,9 @@
-import React from 'react';  // Add this line
+import React,{act} from 'react';
 import { render, screen } from '@testing-library/react';
 import SearchBar from '../SearchBar';
 import FlightsContext from 'context/FlightsContext';
+import '@testing-library/jest-dom';
+
 
 test('renders with FlightsContext values', () => {
   const contextValues = {
@@ -18,11 +20,13 @@ test('renders with FlightsContext values', () => {
     setItineraries: jest.fn(),
   };
 
-  render(
-    <FlightsContext.Provider value={contextValues}>
-      <SearchBar />
-    </FlightsContext.Provider>
-  );
+  act(() => {
+    render(
+      <FlightsContext.Provider value={contextValues}>
+        <SearchBar />
+      </FlightsContext.Provider>
+    );
+  });
 
   // Verify that the context values are displayed
   expect(screen.getByDisplayValue('New York')).toBeInTheDocument();

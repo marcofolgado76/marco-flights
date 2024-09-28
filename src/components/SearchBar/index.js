@@ -205,7 +205,7 @@ const SearchBar = () => {
           <TextField
             id="origin-input"
             placeholder="From"
-            value={origin.name}
+            value={origin.name || ''}
             onChange={(e) => {
               isOriginTyping.current = true;
               setOrigin((prev) => ({ ...prev, name: e.target.value }));
@@ -228,7 +228,7 @@ const SearchBar = () => {
           <TextField
             id="destination-input"
             placeholder="Where to?"
-            value={destination.name}
+            value={destination.name || ''}
             onChange={(e) => {
               isDestinationTyping.current = true;
               setDestination((prev) => ({ ...prev, name: e.target.value }));
@@ -250,7 +250,7 @@ const SearchBar = () => {
         <Grid item xs={12} sm={6} md={2.1}>
           <TextField
             type="date"
-            value={departureDate}
+            value={departureDate || ''}
             onChange={(e) => setDepartureDate(e.target.value)}
             fullWidth
             variant="outlined"
@@ -267,7 +267,7 @@ const SearchBar = () => {
         <Grid item xs={12} sm={6} md={2.1}>
           <TextField
             type="date"
-            value={returnDate}
+            value={returnDate || ''}
             onChange={(e) => setReturnDate(e.target.value)}
             fullWidth
             variant="outlined"
