@@ -18,7 +18,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { searchBarStyles } from './styles';
-import PassengerSelector from 'components/Common/PassengerSelector';
+import PassengerSelector from 'components/PassengerSelector';
 import { searchAirport, searchFlight } from 'services/flightService';
 import FlightsContext from 'context/FlightsContext';
 

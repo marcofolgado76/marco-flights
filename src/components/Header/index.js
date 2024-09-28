@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import HotelIcon from '@mui/icons-material/Hotel';
-import DrawerMenu from 'components/DrawerMenu';
+import DrawerMenu from 'components/Common/DrawerMenu';
 import Logo from 'assets/images/icon.png';
 import { headerStyles } from './styles';
 import Grid from '@mui/material/Grid';

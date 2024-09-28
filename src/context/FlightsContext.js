@@ -5,11 +5,7 @@ const FlightsContext = createContext();
 export const FlightsProvider = ({ children }) => {
   const [itineraries, setItineraries] = useState([]);
   const [origin, setOrigin] = useState({ name: '', entityId: '', skyId: '' });
-  const [destination, setDestination] = useState({
-    name: '',
-    entityId: '',
-    skyId: '',
-  });
+  const [destination, setDestination] = useState({name: '',entityId: '',skyId: ''});
   const [departureDate, setDepartureDate] = useState('');
   const [returnDate, setReturnDate] = useState('');
   const [ticketType, setTicketType] = useState('economy');
